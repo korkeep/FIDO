@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1079432580748",
+    "firebase_url": "https://smartgate-57f27.firebaseio.com",
+    "project_id": "smartgate-57f27",
+    "storage_bucket": "smartgate-57f27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079432580748:android:ba050d0735d7a627b835a9",
+        "android_client_info": {
+          "package_name": "com.example.smartgate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079432580748-cturpmltsicfmab505cqmjpdd6arlrid.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartgate",
+            "certificate_hash": "990b28781df35732da8aef73f6dd7f254b7fc823"
+          }
+        },
+        {
+          "client_id": "1079432580748-jjf2j0sc259b1orjplijdt7j6b7kdrgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChfR8n0Knmh-ao6fPLlJPB7XfBB6liJnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079432580748-jjf2j0sc259b1orjplijdt7j6b7kdrgq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
