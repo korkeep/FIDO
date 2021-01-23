@@ -27,8 +27,8 @@ FIDO-SmartGate프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO
 | Buzzer | 알림 센서, 시각장애인을 위한 음성 안내 기능 |
 
 ### Demo Video
+- [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)  
 ![캡처](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
-- [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)
 
 ### Configuration Steps
 - **Step 1**: Arduino 시리얼 버퍼 크기 늘려주기
