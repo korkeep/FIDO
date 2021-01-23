@@ -1,5 +1,5 @@
-## Design of FIDO Authentication System for Visually Impaired
-### Abstract
+## FIDO-SmartGate
+### Abstract: Design of FIDO Authentication System for Visually Impaired
 프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO(Fast Identity Online)와 개인키 관리 모듈인 SE(Secure Element)를 이용해 시각장애인도 쉽게 사용할 수 있는 인증 시스템을 제안한다. 로그인 단계의 진입 장벽을 허무는 것을 시작으로 ‘배리어- 프리(Barrier-Free)’ 환경을 구축하기 위한 ICT 기술의 활용 방향성 제시를 목표로 한다
 
 ### FIDO UAF
@@ -30,7 +30,7 @@
 ![캡처](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
 - [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)
 
-### Docker Setting
+### Configuration Steps
 - **Step 1**: Arduino 시리얼 버퍼 크기 늘려주기
 ```
 - \Arduino\hardware\arduino\avr\cores\arduino
