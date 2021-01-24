@@ -1,8 +1,8 @@
-## FIDO
-### Design of FIDO Authentication System for Visually Impaired
+# FIDO
+## Design of FIDO Authentication System for Visually Impaired
 FIDO-SmartGate프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO(Fast Identity Online)와 개인키 관리 모듈인 SE(Secure Element)를 이용해 시각장애인도 쉽게 사용할 수 있는 인증 시스템을 제안한다. 로그인 단계의 진입 장벽을 허무는 것을 시작으로 ‘배리어- 프리(Barrier-Free)’ 환경을 구축하기 위한 ICT 기술의 활용 방향성 제시를 목표로 한다.
 
-### FIDO UAF
+## FIDO UAF
 ![FIDO](https://user-images.githubusercontent.com/20378368/105572123-8f912b80-5d98-11eb-9600-12c5b7ceb644.PNG)
 | Content | Description |
 | --- | --- |
@@ -12,7 +12,7 @@ FIDO-SmartGate프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO
 | Server | 전자서명 검증, 개인키 및 증명 정보 저장 |
 | Metadata | Authenticator의 신뢰성 검증을 위한 Data |
 
-### Architecture
+## Architecture
 ![ARCH](https://user-images.githubusercontent.com/20378368/105572210-1d6d1680-5d99-11eb-9278-2f8332cca328.PNG)
 | Content | Description |
 | --- | --- |
@@ -26,11 +26,7 @@ FIDO-SmartGate프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO
 | Button | 버튼 센서, 인터럽트로 Arduino에 신호 전달 |
 | Buzzer | 알림 센서, 시각장애인을 위한 음성 안내 기능 |
 
-### Demo Video
-- [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)  
-![캡처](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
-
-### Configuration Steps
+## Configuration Steps
 - **Step 1**: Arduino 시리얼 버퍼 크기 늘려주기
 ```
 - \Arduino\hardware\arduino\avr\cores\arduino
@@ -79,3 +75,6 @@ FIDO-SmartGate프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO
 - docker-compose build
 - docker-compose up
 ```
+## Demo Video
+- [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)  
+![캡처](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
