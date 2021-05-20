@@ -1,80 +1,78 @@
 # FIDO-Standalone
-## Design of FIDO Authentication System
-FIDO-Standalone 프로젝트는 공개키 기반 생체인증 프로토콜인 FIDO(Fast Identity Online)와 개인키 관리 모듈인 SE(Secure Element)를 이용해 누구나 쉽게 사용할 수 있는 인증 시스템을 제안한다.  
+FIDO-Standalone project proposes secure authentication system using biometric authentication protocol FIDO (Fast Identity Online) and key management module SE (Secure Element) ☝🔐  
 
 ## FIDO UAF
 ![FIDO](https://user-images.githubusercontent.com/20378368/105572123-8f912b80-5d98-11eb-9600-12c5b7ceb644.PNG)
 | Content | Description |
 | --- | --- |
-| Client | ASM ↔ Browser/App의 Data 전달 |
-| ASM | Client ↔ Authenticator 통신을 위한 플러그인 |
-| Authenticator | 전자서명 생성, 개인키 및 생체 정보 저장 |
-| Server | 전자서명 검증, 개인키 및 증명 정보 저장 |
-| Metadata | Authenticator의 신뢰성 검증을 위한 Data |
+| Client | Mediate data transfer between ASM and Application |
+| ASM | Plug-in for FIDO communication between ASM and Client |
+| Authenticator | Create digital signature, Store private key & bio info |
+| Server | Verify digital signature, Store public key & auth info |
+| Metadata | Metadata for authenticator verification |
 
 ## Architecture
 ![ARCH](https://user-images.githubusercontent.com/20378368/105572210-1d6d1680-5d99-11eb-9278-2f8332cca328.PNG)
 | Content | Description |
 | --- | --- |
-| RPi | FIDO Client 역할, 부팅과 동시에 에이전트 파일이 자동 실행 |
-| Tomcat | FIDO Server와 연동, Apache의 웹 애플리케이션 Server |
-| Docker | FIDO Server는 Docker로 실행됨, 컨테이너 기반 Server 관리 툴 |
-| Firebase | 인증 성공 시 푸시 알림 전송됨, FCM(Firebase Cloud Messaging) 이용 |
-| Arduino | AM(Authenticator Module) 역할, SE와 각종 센서를 제어하는 마이크로컨트롤러 |
-| SE | RoT 환경 제공, 개인키 및 생체 정보 저장 |
-| Fingerprint | 지문 센서, 지문 정보를 디지털 데이터로 변환 |
-| Button | 버튼 센서, 인터럽트로 Arduino에 신호 전달 |
-| Buzzer | 알림 센서, 시각장애인을 위한 음성 안내 기능 |
+| RPi | RPi acts as a FIDO Client. Upon booting, agent file is automatically executed. |
+| Tomcat | Tomcat is Apache's web application server. It works as FIDO server. |
+| Docker | Docker is a container-based server management tool. FIDO Server runs as Docker |
+| Firebase | Use FCM(Firebase Cloud Messaging) function. When authentication is successful, a push notification is sent. |
+| Arduino | Arduino is a microcontroller that controls SE and various sensors. It acts as AM (Authenticator Module). |
+| SE | SE(Secure Element) ensures RoT environment. It stores private key and biometric information |
+| Fingerprint | It is a sensor that converts fingerprint information into digital data. |
+| Button | It is a sensor that transmits a signal to the Arduino as an interrupt. |
+| Buzzer | It is a sensor that provides voice guidance for the visually impaired. |
 
 ## Configuration Steps
-- **Step 1**: Arduino 시리얼 버퍼 크기 늘려주기
+- **Step 1**: Increase Arduino serial buffer size
 ```
-- \Arduino\hardware\arduino\avr\cores\arduino
-- HardwareSerial.h 파일의 Buffer 크기를 512로 설정
+$ cd {Arduino Install Path}\Arduino\hardware\arduino\avr\cores\arduino
+# Set the buffer size of HardwareSerial.h file to 512
 ```
-- **Step 2**: Android Application token 설정
+- **Step 2**: Configureation of Android Application token
 ```
-- Android Source/SmartGate/app/release 폴더로 이동
-- app-release.apk 파일을 스마트폰에 옮겨 App 설치
-- App 실행시 Toast Message로 출력되는 token 값을 복사
-- Server Source의 UAF.tar 압축 해제
-- FIDO/UAF/fidouaf/src/main/java/org/ebayopensource/fidouaf/res 폴더로 이동
-- FidUafResource.java 파일의 /public/authResponse에 token값 옮기기
+$ cd {Path}/FIDO-Standalone/Android Source/SmartGate/app/release
+# Install the app-release.apk file on the Android device
+# Copy the token value displayed as Toast Message when running the Application
+$ tar -xvf {Path}/FIDO-Standalone/Server Source/UAF.tar
+$ cd {Path}/FIDO-Standalone/Server Source/UAF/fidouaf/src/main/java/org/ebayopensource/fidouaf/res
+# Copy the token value displayed on the Android device to /public/authResponse in FidUafResource.java
 ```
-- **Step 3**: mvn 패키지를 이용해 core 파일 설치
+- **Step 3**: Install core file using mvn package
 ```
-- UAF.tar 압축 해제 경로로 이동
-- cd ./fido-uaf-core
-- mvn clean install 명령어 입력
+$ cd {Path}/FIDO-Standalone/Server Source/UAF/fido-uaf-core
+$ mvn clean install
 ```
-- **Step 4**: Docker 이미지 생성
+- **Step 4**: Create Docker image
 ```
-- docker-fidouafserver.tar 압축 해제 경로로 이동
-- docker exec -it <container ID> /bin/sh
+$ tar -xvf {Path}/FIDO-Standalone/Server Source/docker-fidouafserver.tar
+$ cd {Path}/FIDO-Standalone/Server Source/docker-fidouafserver
+$ docker exec -it {container ID} /bin/sh
 ```
-- **Step 5**: Firebase 인증서 가져오기
+- **Step 5**: Import Firebase Certificate
 ```
-- Firebase Console 접속
-- 클라우드 메시징 → 웹 구성 선택
-- '키 쌍 가져오기'를 통해 json 형식의 키 쌍 생성
-- /usr/local/tomcat/conf 파일에 json 파일 저장
+# Access the Firebase Console
+# Cloud Messaging → Select Web Config
+# Generating json format key pairs via 'Get Key Pair'
+# Save json file in /usr/local/tomcat/conf
 ```
-- **Step 6**: mvn 패키지를 이용해 전체 파일 설치
+- **Step 6**: Entire file installation using mvn package
 ```
-- UAF.tar 압축 해제 경로로 이동
-- cd ./fidouaf
-- mvn clean install 명령어 입력
+$ cd {Path}/FIDO-Standalone/Server Source/UAF/fidouaf
+$ mvn clean install
 ```
-- **Step 7**: 생성된 파일 Docker로 복사
+- **Step 7**: Copy the generated file to Docker
 ```
-- cp -r ~/.m2/repository/org/ebayopensource/fidouaf/0.0.1-SNAPSHOT/fidouaf-0.0.1-SNAPSHOT.war ~/FIDO/docker-fidouafserver/tomcat/fidouaf.war
+$ cp -r ~/.m2/repository/org/ebayopensource/fidouaf/0.0.1-SNAPSHOT/fidouaf-0.0.1-SNAPSHOT.war ~/FIDO/docker-fidouafserver/tomcat/fidouaf.war
 ```
-- **Step 8**: Docker 이미지 실행
+- **Step 8**: Run the Docker image
 ```
-- docker-compose down
-- docker-compose build
-- docker-compose up
+$ docker-compose down
+$ docker-compose build
+$ docker-compose up
 ```
 ## Demo Video
 - [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)  
-![캡처](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
+![Video Capture](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
