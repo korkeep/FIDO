@@ -1,5 +1,5 @@
 # FIDO-Standalone
-FIDO-Standalone project proposes secure authentication system using biometric authentication protocol FIDO (Fast Identity Online) and key management module SE (Secure Element) ☝🔐  
+FIDO-Standalone project proposes secure authentication system using biometric authentication protocol FIDO(Fast Identity Online) and key management module SE(Secure Element) ☝🔐  
 
 ## FIDO UAF
 ![FIDO](https://user-images.githubusercontent.com/20378368/105572123-8f912b80-5d98-11eb-9600-12c5b7ceb644.PNG)
@@ -17,13 +17,12 @@ FIDO-Standalone project proposes secure authentication system using biometric au
 | --- | --- |
 | RPi | RPi acts as a FIDO Client. Upon booting, agent file is automatically executed. |
 | Tomcat | Tomcat is Apache's web application server. It works as FIDO server. |
-| Docker | Docker is a container-based server management tool. FIDO Server runs as Docker. |
-| Firebase | Use FCM function. When authentication is successful, a push notification is sent to Android device. |
+| Docker | Docker is container-based server management tool. FIDO Server runs through Docker. |
+| Firebase | Provides FCM function. When authentication is successful, push notification is sent to Android device. |
 | Arduino | Arduino is a microcontroller that controls SE and various sensors. It acts as Authenticator. |
-| SE | SE(Secure Element) ensures RoT environment. It stores private key and biometric information. |
-| Fingerprint | It is a sensor that converts fingerprint information into digital data. |
-| Button | It is a sensor that transmits a signal to the Arduino as an interrupt. |
-| Buzzer | It is a sensor that provides voice guidance for the visually impaired. |
+| SE | SE ensures RoT environment. It stores private key and bio information. |
+| Fingerprint | A sensor that converts fingerprint image into digital data. |
+| Button | A sensor that transmits a signal to Arduino through interrupts. |
 
 ## Configuration Steps
 - **Step 1**: Increase Arduino serial buffer size
@@ -31,7 +30,7 @@ FIDO-Standalone project proposes secure authentication system using biometric au
 $ cd {Arduino Install Path}\Arduino\hardware\arduino\avr\cores\arduino
 # Set the buffer size of HardwareSerial.h file to 512
 ```
-- **Step 2**: Configureation of Android Application token
+- **Step 2**: Config of Android Application Firebase token
 ```
 $ cd {Path}/FIDO-Standalone/Android Source/SmartGate/app/release
 # Install the app-release.apk file on the Android device
