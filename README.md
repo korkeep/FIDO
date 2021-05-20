@@ -20,7 +20,7 @@ FIDO-Standalone project proposes secure authentication system using biometric au
 | Docker | Docker is container-based server management tool. FIDO Server runs through Docker. |
 | Firebase | Provides FCM(Firebase Cloud Messaging) function. When authentication is successful, push notification is sent to Android device. |
 | Arduino | Arduino is a microcontroller that controls SE and various sensors. It acts as Authenticator. |
-| SE | SE ensures RoT environment. It stores private key and bio information. |
+| SE | SE ensures RoT(Root of Trust) environment. It stores private key and bio information. |
 | Fingerprint | A sensor that converts fingerprint image into digital data. |
 | Button | A sensor that transmits a signal to Arduino through interrupts. |
 
