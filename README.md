@@ -18,7 +18,7 @@ FIDO-Standalone project proposes secure authentication system using biometric au
 | RPi | RPi acts as a FIDO Client. Upon booting, agent file is automatically executed. |
 | Tomcat | Tomcat is Apache's web application server. It works as FIDO server. |
 | Docker | Docker is container-based server management tool. FIDO Server runs through Docker. |
-| Firebase | Provides FCM function. When authentication is successful, push notification is sent to Android device. |
+| Firebase | Provides FCM(Firebase Cloud Messaging) function. When authentication is successful, push notification is sent to Android device. |
 | Arduino | Arduino is a microcontroller that controls SE and various sensors. It acts as Authenticator. |
 | SE | SE ensures RoT environment. It stores private key and bio information. |
 | Fingerprint | A sensor that converts fingerprint image into digital data. |
