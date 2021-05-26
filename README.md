@@ -74,4 +74,4 @@ $ docker-compose up
 ```
 ## Demo Video
 - [YouTube Link](https://www.youtube.com/watch?v=aOKBzFgywHA)  
-![Video Capture](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
+> ![Video Capture](https://user-images.githubusercontent.com/20378368/105572323-cf0c4780-5d99-11eb-900e-824e0e870d30.PNG)
